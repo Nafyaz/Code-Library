@@ -15,7 +15,8 @@ bool isPrime(LL n)
 // ----------------------------------------------------------------------
 
 // Fermat's Primality Test, vulnerable to Charmichael numbers
-bool isPrime2(LL n)
+// [Liar Numbers - Numberphile](https://www.youtube.com/watch?v=jbiaz_aHHUQ&ab_channel=Numberphile)
+bool isPrime(LL n)
 {
     vector<LL> checkerPrimes = {2, 3, 5, 7};
     if(binary_search(checkerPrimes.begin(), checkerPrimes.end(), n) == 1)
@@ -42,23 +43,53 @@ bool isPrime2(LL n)
 // ----------------------------------------------------------------------
 
 //Miller Rabin
-bool isPrime3(LL n) {
-  if (n < 2 or n % 6 % 4 != 1) return (n | 1) == 3;
-  LL a[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
-  LL s = __builtin_ctzll(n - 1), d = n >> s;
-  for (LL x : a) {
-    LL p = bigmod(x % n, d, n), i = s;
-    for (; p != 1 and p != n - 1 and x % n and i--; p = mulmod(p, p, n))
-      ;
-    if (p != n - 1 and i != s) return false;
-  }
-  return true;
+// [How To Tell If A Number Is Prime: The Miller-Rabin Primality Test](https://www.youtube.com/watch?v=zmhUlVck3J0&ab_channel=WilliamY.Feng)
+
+/*
+Miller Rabin
+    returns 1 if prime, 0 otherwise
+    Magic bases:
+        n < 4,759,123,141        3 :  2, 7, 61
+        n < 1,122,004,669,633    4 :  2, 13, 23, 1662803
+        n < 3,474,749,660,383    6 :  2, 3, 5, 7, 11, 13
+        n < 2^64                 7 :  2, 325, 9375, 28178, 450775, 9780504, 1795265022 (Couldn't find reference to this)
+    Identifies 70000 18 digit primes in 1 second on Toph
+*/
+
+bool isPrime(LL n) 
+{
+    if (n < 2 or n % 6 % 4 != 1) 
+        return (n | 1) == 3;
+
+    LL bases[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
+    LL s = __builtin_ctzll(n - 1), d = (n - 1) >> s;
+
+    for (LL b : bases) 
+    {
+        if(b%n == 0)
+            continue;
+
+        LL p = bigmod(b % n, d, n);
+
+        if(p == 1)
+            continue;
+
+        LL iter = s;
+
+        while (p != n-1 and iter--)
+            p = mulmod(p, p, n);
+        
+        if (p != n-1)
+            return false;
+    }
+    return true;
 }
 
 // ----------------------------------------------------------------------
 
 //Miller-Rabin (2)
-bool witness(LL wit, LL n){
+bool witness(LL wit, LL n)
+{
     if(wit >= n) 
         return false;
 
@@ -66,12 +97,13 @@ bool witness(LL wit, LL n){
     while(t%2==0) s++,t/=2;
 
     wit = bigmod(wit,t,n);
-    if(wit==1 || wit==n-1) 
+    if(wit == 1 || wit == n-1) 
         return false;
 
-    for(int i=1;i<s;i++){
-        wit=mulmod(wit,wit,n);
-        if(wit == 1) 
+    for(int i = 1; i < s; i++)
+    {
+        wit = mulmod(wit, wit, n);
+        if(wit == 1)
             return true;
         if(wit == n - 1) 
             return false;
@@ -79,18 +111,13 @@ bool witness(LL wit, LL n){
     return true;
 }
 
-//Is n prime?
-bool miller(LL n){
-    
+bool isPrime(LL n)
+{    
     //Check if n is a multiple of 2 or 3
     if (n < 2 or n % 6 % 4 != 1) 
         return (n | 1) == 3;
 
-    // For numbers upto 2^64:
-    LL bases[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
-
-    // For numbers upto 2^32:
-    // LL bases[] = {2, 7, 61};
+    LL bases[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
 
     for(LL b : bases)
     {

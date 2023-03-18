@@ -12,7 +12,9 @@ LL bigmod(LL a, LL p, LL mod = MOD)
     return ret;
 }
 
-LL bigmod2(LL a, LL p, LL mod = MOD)
+// ----------------------------------------------------------------------
+
+LL bigmod(LL a, LL p, LL mod = MOD)
 {
     LL ret = 1%mod;
     while(p)

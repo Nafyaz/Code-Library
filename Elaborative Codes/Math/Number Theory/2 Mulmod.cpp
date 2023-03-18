@@ -10,7 +10,9 @@ LL mulmod(LL a, LL b, LL mod = MOD)
         return res;
 }
 
-LL mulmod2(LL a, LL b, LL mod = MOD)
+// ----------------------------------------------------------------------
+
+LL mulmod(LL a, LL b, LL mod = MOD)
 {
     LL ret = 0;
 

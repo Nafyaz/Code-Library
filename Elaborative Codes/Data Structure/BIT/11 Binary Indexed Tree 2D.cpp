@@ -1,6 +1,9 @@
+// Always starts with (1, 1) as top right corner of grid
+
 LL mx = 100, my = 100;
 BIT[mx][my];
 
+// Adds val in position (x, y)
 void update(LL x, LL y, LL val)
 {
     LL y1;
@@ -15,6 +18,8 @@ void update(LL x, LL y, LL val)
         x += (x & -x);
     }
 }
+
+// returns the sum of all numbers in rectangle with corner (1, 1) and (x, y).
 LL query(LL x, LL y)
 {
     LL y1, sum = 0;

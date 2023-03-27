@@ -23,10 +23,10 @@ LL Query(LL i)
     return sum;
 }
 
-// Add 7 in position 0
-Update(0, 7);
+// Add 7 in position 1
+Update(1, 7);
 // Add 20 in position 8
 Update(8, 20);
 
 cout << "Sum of First 10 elements: " << Query(10) << "\n";
-cout << "Sum of elements in [2, 7]: " << Query(7) - query(1) << "\n";
+cout << "Sum of elements in [2, 7]: " << Query(7) - Query(1) << "\n";

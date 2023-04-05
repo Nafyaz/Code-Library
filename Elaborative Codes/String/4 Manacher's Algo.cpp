@@ -1,9 +1,9 @@
-LL pal[300009], n;
-string s = "#";
+// Finds all palindrome in O(n)
 
-void manacher()
+vector<LL> manacher(string s)
 {
-    LL i, l, r, k;
+    LL i, l, r, k, n = s.size();
+    vector<LL> pal(n);
 
     for(i = 0, l = 0, r = -1; i < n; i++)
     {
@@ -24,24 +24,25 @@ void manacher()
             r = i+k;
         }
     }
+
+    return pal;
 }
 
 int main()
 {
     LL i, ans = 0;
-    string stemp;
+    string s, stemp;
 
     cin >> n >> stemp;
 
+    s = '#';
     for(i = 0; i < stemp.size(); i++)
     {
         s.push_back(stemp[i]);
         s.push_back('#');
     }
 
-    n = s.size();
-
-    manacher();
+    vector<LL> pal = manacher(s);
 
     for(i = 0; i < n; i++)
         cout << pal[i] << " ";

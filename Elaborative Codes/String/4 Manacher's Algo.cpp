@@ -2,10 +2,10 @@
 
 vector<LL> manacher(string s)
 {
-    LL i, l, r, k, n = s.size();
+    LL k, n = s.size();
     vector<LL> pal(n);
 
-    for(i = 0, l = 0, r = -1; i < n; i++)
+    for(LL i = 0, l = 0, r = -1; i < n; i++)
     {
         if(i > r)
             k = 1;

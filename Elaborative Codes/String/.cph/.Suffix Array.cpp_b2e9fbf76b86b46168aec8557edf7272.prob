@@ -1,0 +1,1 @@
+{"name":"Local: Suffix Array","url":"e:\\CP\\Code Library\\Elaborative Codes\\String\\Suffix Array.cpp","tests":[{"id":1681318210536,"input":"5\nababa\n00100","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\CP\\Code Library\\Elaborative Codes\\String\\Suffix Array.cpp","group":"local","local":true}

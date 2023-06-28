@@ -8,34 +8,34 @@ vector<edge> e;
 
 void solve()
 {
-    vector<int> d (n, INF);
-    vector<int> p (n, -1);
-    d[v] = 0;
-    bool any = 1;
-    while(any)
+    vector<int> dist (n, INF);
+    vector<int> parent (n, -1);
+    dist[v] = 0;
+    bool flag = 1;
+    while(flag)
     {
-        any = 0;
+        flag = 0;
 
-        for (int j=0; j<m; j++)
+        for (int j = 0; j < m; j++)
         {
-            if (d[e[j].a] < INF)
+            if (dist[e[j].a] < INF)
             {
-                if (d[e[j].b] > d[e[j].a] + e[j].cost)
+                if (dist[e[j].b] > dist[e[j].a] + e[j].cost)
                 {
-                    d[e[j].b] = d[e[j].a] + e[j].cost;
-                    p[e[j].b] = e[j].a;
-                    any = 1;
+                    dist[e[j].b] = dist[e[j].a] + e[j].cost;
+                    parent[e[j].b] = e[j].a;
+                    flag = 1;
                 }
             }
         }
     }
 
-    if (d[t] == INF)
+    if (dist[t] == INF)
         cout << "No path from " << v << " to " << t << ".";
     else
     {
         vector<int> path;
-        for (int cur = t; cur != -1; cur = p[cur])
+        for (int cur = t; cur != -1; cur = parent[cur])
             path.push_back (cur);
         reverse (path.begin(), path.end());
 

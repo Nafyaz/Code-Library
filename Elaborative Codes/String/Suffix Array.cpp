@@ -48,7 +48,7 @@ void radix_sort(vector<pair<pii, int>> &v)
 vector<int> get_SA(string &s)
 {
     int i, len, cnt, n = s.size();
-    vector<int> prev(n), ret(n);
+    vector<int> prev(n), sa(n);
     vector<pair<pii, int>> curr;
 
     for(i = 0; i < n; i++)
@@ -78,15 +78,14 @@ vector<int> get_SA(string &s)
     }
 
     for(i = 0; i < n; i++)
-        ret[prev[i]] = i;
+        sa[prev[i]] = i;
 
-    return ret;
+    return sa;
 }
 
 vector<int> get_LCP(string &s, vector<int>&sa)
 {
     int i, j, k, n = s.size();
-
     vector<int> lcp(n-1), rank(n);
     
     for(i = 0; i < n; i++)

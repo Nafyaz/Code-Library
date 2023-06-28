@@ -1,21 +1,20 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 struct AC 
 {
-    int id, P;
-    const int sz = 26;
-    vector <vector <int>> trie;
-    vector <int> link, out_link;
-    vector <vector <int>> out;
+    LL id, P;
+    const LL sz = 26;
+    vector <vector <LL>> trie;
+    vector <LL> link, out_link;
+    vector <vector <LL>> out;
     
     AC(): id(0), P(0) 
     {
         node();
     }
     
-    int node() 
+    LL node() 
     {
         trie.emplace_back(sz, 0);
         link.emplace_back(0);
@@ -24,15 +23,15 @@ struct AC
         return id++;
     }
 
-    inline int get (char c) 
+    inline LL get (char c) 
     {
         return c - 'a';
     }
 
-    int add_pattern (const string T) 
+    LL add_pattern (string s) 
     {
-        int r = 0;
-        for (auto c : T) 
+        LL r = 0;
+        for (auto c : s)
         {
             if (!trie[r][get(c)]) 
                 trie[r][get(c)] = node();
@@ -42,30 +41,30 @@ struct AC
         return P++;
     }
 
-    void compute() 
+    void bfs() 
     {
-        queue <int> q;
+        queue <LL> q;
         q.push(0);
         while(!q.empty()) 
         {
-            int u = q.front(); 
+            LL r = q.front(); 
             q.pop();
-            for (int c = 0; c < sz; c++) 
+            for (LL c = 0; c < sz; c++) 
             {
-                int v = trie[u][c];
-                if (!v) 
-                    trie[u][c] = trie[link[u]][c];
+                LL r2 = trie[r][c];
+                if (!r2) 
+                    trie[r][c] = trie[link[r]][c];
                 else 
                 {
-                    link[v] = u ? trie[link[u]][c] : 0;
-                    out_link[v] = out[link[v]].empty() ? out_link[link[v]] : link[v];
-                    q.push(v);
+                    link[r2] = r ? trie[link[r]][c] : 0;
+                    out_link[r2] = out[link[r2]].empty() ? out_link[link[r2]] : link[r2];
+                    q.push(r2);
                 }
             }
         }
     }
 
-    int advance (int r, char c) 
+    LL advance (LL r, char c) 
     {
         while (r && !trie[r][get(c)]) 
             r = link[r];
@@ -75,11 +74,11 @@ struct AC
 
     void match (const string S) 
     {
-        int u = 0;
+        LL u = 0;
         for (auto c : S) 
         {
             u = advance(u, c);
-            for (int v = u; v; v = out_link[v]) 
+            for (LL v = u; v; v = out_link[v]) 
             {
                 for (auto p : out[v]) 
                     cout << "match " << p << endl;
@@ -91,7 +90,7 @@ struct AC
 int main() 
 {
     AC aho; 
-    int n; 
+    LL n; 
     cin >> n;
     while (n--) 
     {
@@ -100,7 +99,7 @@ int main()
         
         aho.add_pattern(s);
     }
-    aho.compute();
+    aho.bfs();
     string text; 
     cin >> text;
     aho.match(text);

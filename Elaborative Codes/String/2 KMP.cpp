@@ -1,9 +1,9 @@
 // Longest Prefix which is also a Suffix
-LL LPS[MAXN], n;
 
-void KMP(string s)
+vector<LL> KMP(string s)
 {
     LL i, j, n = s.size();
+    vector<LL> LPS(n);
 
     LPS[0]=0;
 
@@ -19,4 +19,6 @@ void KMP(string s)
 
         LPS[i] = j;
     }
+
+    return LPS;
 }

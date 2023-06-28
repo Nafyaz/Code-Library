@@ -1,10 +1,11 @@
-LL inv[MAXN];
 
 //only if mod is prime and gcd(a, mod) = 1
 LL invmod(LL a, LL mod)
 {
     return bigmod(a, mod-2, mod);
 }
+
+// ----------------------------------------------------
 
 LL egcd(LL a, LL m, LL& x, LL& y)
 {
@@ -25,7 +26,7 @@ LL egcd(LL a, LL m, LL& x, LL& y)
 }
 
 //when gcd(a, mod) = 1
-LL invod2(LL a, LL mod)
+LL invmod(LL a, LL mod)
 {
     LL x, y;
     egcd(a, mod, x, y);
@@ -33,6 +34,9 @@ LL invod2(LL a, LL mod)
     return (x%mod + mod) % mod;
 }
 
+// ---------------------------------------------------
+
+LL inv[MAXN];
 //when N is prime
 void allinvmod()
 {

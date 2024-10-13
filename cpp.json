@@ -1,0 +1,117 @@
+{
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Multiple Test Cases Template": {
+		"prefix": "#ii",
+		"body": [
+			"#include<bits/stdc++.h>",
+			"using namespace std;",
+			"",
+			"#include<ext/pb_ds/assoc_container.hpp>",
+			"#include<ext/pb_ds/tree_policy.hpp>",
+			"using namespace __gnu_pbds;",
+			"template<typename T>",
+			"using ordered_set = tree<T, null_type,less<T>, rb_tree_tag, tree_order_statistics_node_update>;",
+			"",
+			"#define show(x) cout << #x << \": \" << x << \"; \"",
+			"#define MOD 1000000007",
+			"#define MAXN 2000006",
+			"",
+			"int main()",
+			"{",
+			"    ios_base::sync_with_stdio(0);",
+			"    cin.tie(0);",
+			"",
+			"    $0",
+			"}"
+		],
+		"description": "Use this for problems without test cases"
+	},
+
+	"Single Case Template": {
+		"prefix": "#tt",
+		"body": [
+			"#include<bits/stdc++.h>",
+			"using namespace std;",
+			"",
+			"#include<ext/pb_ds/assoc_container.hpp>",
+			"#include<ext/pb_ds/tree_policy.hpp>",
+			"using namespace __gnu_pbds;",
+			"template<typename T>",
+			"using ordered_set = tree<T, null_type,less<T>, rb_tree_tag, tree_order_statistics_node_update>;",
+			"",
+			"#define show(x) cout << #x << \": \" << x << \"; \"",
+			"#define MOD 1000000007",
+			"#define MAXN 2000006",
+			"",
+			"void solve(int caseno)",
+			"{",
+			"    $0",
+			"}",
+			"",
+			"int main()",
+			"{",
+			"    ios_base::sync_with_stdio(0);",
+			"    cin.tie(0);",
+			"",
+			"    int T = 1, caseno = 0;",
+			"",
+			"    cin >> T;",
+			"",
+			"    while(T--)",
+			"    {",
+			"        solve(++caseno);",
+			"    }",
+			"}"
+		],
+		"description": "Use this for problems with test cases"
+	},
+
+	"pair": {
+		"prefix": "pii",
+		"body": ["pair<int, int> "],
+		"description": "pair of integers",
+	},
+
+	"long long pair": {
+		"prefix": "pll",
+		"body": ["pair<long long, long long> "],
+		"description": "pair of long longs",
+	},
+
+	"long long": {
+		"prefix": "LL",
+		"body": ["long long"],
+		"description": "long long integer",
+	},
+
+	"first": {
+		"prefix": "ff",
+		"body": ["first"],
+		"description": "first element of a pair",
+	},
+
+	"second": {
+		"prefix": "ss",
+		"body": ["second"],
+		"description": "second element of a pair",
+	},
+
+	"vector push back": {
+		"prefix": "pb",
+		"body": "push_back($0);",
+		"description": "",
+	}
+}

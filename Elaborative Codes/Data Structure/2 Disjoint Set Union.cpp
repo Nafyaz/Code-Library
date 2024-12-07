@@ -4,7 +4,7 @@ LL Find(LL x)
 {
     if (x == leader[x])
         return x;
-    return leader[x] = find_set(leader[x]);
+    return leader[x] = Find(leader[x]);
 }
 
 void Union(LL x, LL y) {

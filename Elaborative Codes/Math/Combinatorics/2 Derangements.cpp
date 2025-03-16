@@ -2,10 +2,10 @@
 LL D[MAXN];
 LL getDerange(LL n)
 {
+    if(n == 0)
+        return D[1] = 1;
     if(n == 1)
-        return D[1] = 0;
-    if(n == 2)
-        return D[2] = 1;
+        return D[2] = 0;
     if(D[n] != 0)
         return D[n];
 

@@ -93,7 +93,7 @@
 
 	"long long": {
 		"prefix": "LL",
-		"body": ["long long"],
+		"body": ["long long "],
 		"description": "long long integer",
 	},
 

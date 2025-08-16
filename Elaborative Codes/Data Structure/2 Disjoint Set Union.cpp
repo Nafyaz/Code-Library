@@ -7,7 +7,8 @@ LL Find(LL x)
     return leader[x] = Find(leader[x]);
 }
 
-void Union(LL x, LL y) {
+void Union(LL x, LL y)
+{
     x = Find(x);
     y = Find(y);
 

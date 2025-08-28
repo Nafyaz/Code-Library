@@ -6,7 +6,7 @@ vector<LL> z_function(string s)
     for(i = 1, l = 0, r = 0; i < n; i++)
     {
         if(i <= r) //This condition is false when i=1
-            Z[i] = min(r-i+1, Z[i-l]);
+            Z[i] = min(Z[i-l], r-i+1);
         while(i+Z[i] < n && s[Z[i]] == s[i+Z[i]])
             Z[i]++; //if Z[1] has previous value, it will cause problem here
  

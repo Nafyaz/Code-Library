@@ -15,7 +15,7 @@ void rmq_init()
         Log[i] = Log[i/2] + 1;
 
     cin >> n;
-    for(i = 0; i <= n; i++)
+    for(i = 0; i < n; i++)
         sparse[i][0] = arr[i];
 
     for(j = 1; j < 20; j++)
